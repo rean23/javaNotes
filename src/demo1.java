@@ -112,7 +112,6 @@ public class demo1 {
          * 有些时候，类型的名字太长，写起来比较麻烦
          */
         StringBuilder sb = new StringBuilder();
-        var sa = new StringBuilder();
 
     }
 }
