@@ -1,4 +1,4 @@
-//数据运算
+//类型运算
 public class demo2 {
     public static void main(String[] args) {
 
@@ -106,8 +106,73 @@ public class demo2 {
         int s2 = 5678;
 
         int b1 = s1 + s2;
-        short b2 = (short)(s1+s2);//这里ide会报错 因为short类型提升为int 只能进行类型强制转换
+        short b2 = (short) (s1 + s2);//这里ide会报错 因为short类型提升为int 只能进行类型强制转换
         System.out.println(b1);//6912
         System.out.println(b2);//6912 经过强制转换的数值很可能会不准确
+
+
+        //浮点运算 浮点数运算和整数运算相比，只能进行加减乘除这些数值计算，不能做位运算和移位运算。
+
+        double d = 1.0 / 10;
+        double d1 = 1 - 9.0 / 10;
+
+        //浮点数0.1在计算机中就无法精确表示，因为十进制的0.1换算成二进制是一个无限循环小数，很显然，无论使用float还是double，都只能存储一个0.1的近似值。但是，0.5这个浮点数又可以精确地表示。
+        System.out.println(d);//0.1
+        System.out.println(d1);//0.09999999999999998
+
+        //类型提升 如果参与运算的两个数其中一个是整型，那么整型可以自动提升到浮点型
+        int num = 5;
+        double num1 = 1.2 + 24.0 / num;
+        System.out.println(num1);//6.0
+
+        double num2 = 1.2 + 24 / 5;
+        System.out.println(num2);//5.2 因为这里计算24/5的时候两个整数计算结果为4
+
+
+        /**
+         * 除以0的时候会返回几个特殊值
+         * NaN表示Not a Number
+         * Infinity表示无穷大
+         * -Infinity表示负无穷大
+         */
+        double num3 = 0.0 / 0;
+        double num4 = 1.0 / 0;
+        double num5 = -1.0 / 0;
+        System.out.println(num3);//NaN
+        System.out.println(num4);//Infinity
+        System.out.println(num5);//-Infinity
+
+        //强制转换
+        int foo1 = (int) 12.3;
+        int foo2 = (int) -12.3;
+        int foo3 = (int) 1.2e20;
+
+        System.out.println(foo1);//12
+        System.out.println(foo2);//-12
+        System.out.println(foo3);//2147483647 超过int类型的最大范围
+
+
+        //布尔运算
+        boolean isGreater = 5 > 3; // true
+        int age = 12;
+        boolean isZero = age == 0; // false
+        boolean isNonZero = !isZero; // true
+        boolean isAdult = age >= 18; // false
+        boolean isTeenager = age > 6 && age < 18; // true
+
+
+        //短路运算 布尔运算的一个重要特点是短路运算。如果一个布尔运算的表达式能提前确定结果，则后续的计算不再执行，直接返回结果。
+
+        boolean isMax = 5 < 3;
+        boolean result = isMax && (5 / 0 > 0);
+        System.out.println(result);//如果没有短路运算  则&&后面的语句会报错 如果把isMax的结果改为true则报错
+
+        boolean result1 = true || (5 / 0 > 0);//换成或运算符 后面语句也不执行
+        System.out.println(result1);
+
+        //三元运算符
+        int age1 = 26;
+        int result2 = n >= 0 ? 1 : 2;
+        System.out.println(result2);
     }
 }
