@@ -1,5 +1,6 @@
 import java.util.Arrays;
 
+//一个文件只能有一个public clas 类名必须与文件名一致
 public class demo8 {
 
 
@@ -22,6 +23,8 @@ public class demo8 {
         person.setUserList("Rean", "Ronaldo", "Beckham");
         System.out.println(Arrays.toString(person.getUserList()));
 
+        //重载
+        person.talk("rean");
         //相同参数个数的情况下,判断类型
         person.talk(26,"rean");
         person.talk("rean",26);
@@ -73,7 +76,9 @@ class Person {
     public void talk() {
 
     }
-    public void talk(String str) {}
+    public void talk(String str) {
+        System.out.println("talk1");
+    }
     public void talk(String str,int type) {
         System.out.println("talk3");
     }
